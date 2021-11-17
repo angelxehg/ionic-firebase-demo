@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { AngularFireAuthGuard, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
 
 import { ResponsiveLayoutComponent } from './components/responsive-layout/responsive-layout.component';
 
@@ -11,7 +11,8 @@ const routes: Routes = [
   {
     path: '',
     component: ResponsiveLayoutComponent,
-    ...canActivate(redirectUnauthorizedToLogin),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
     children: [
       {
         path: '',
@@ -35,12 +36,14 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
-    ...canActivate(redirectLoggedInToHome),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectLoggedInToHome },
   },
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule),
-    ...canActivate(redirectLoggedInToHome),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectLoggedInToHome },
   },
   {
     path: 'verify',
@@ -53,27 +56,32 @@ const routes: Routes = [
   {
     path: 'linkGoogle',
     loadChildren: () => import('./pages/link-google/link-google.module').then( m => m.LinkGooglePageModule),
-    ...canActivate(redirectUnauthorizedToLogin),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   {
     path: 'changeEmail',
     loadChildren: () => import('./pages/change-email/change-email.module').then( m => m.ChangeEmailPageModule),
-    ...canActivate(redirectUnauthorizedToLogin),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   {
     path: 'changePassword',
     loadChildren: () => import('./pages/change-password/change-password.module').then( m => m.ChangePasswordPageModule),
-    ...canActivate(redirectUnauthorizedToLogin),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   {
     path: 'createPassword',
     loadChildren: () => import('./pages/create-password/create-password.module').then( m => m.CreatePasswordPageModule),
-    ...canActivate(redirectUnauthorizedToLogin),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   {
     path: 'deleteAccount',
     loadChildren: () => import('./pages/delete-account/delete-account.module').then( m => m.DeleteAccountPageModule),
-    ...canActivate(redirectUnauthorizedToLogin),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
 ];
 
