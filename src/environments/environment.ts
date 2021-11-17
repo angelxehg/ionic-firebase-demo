@@ -4,13 +4,12 @@
 
 export const environment = {
   firebase: {
-    projectId: 'examples-c6a7d',
-    appId: '1:971224201055:web:093f48d48981e6ffaf28ea',
-    storageBucket: 'examples-c6a7d.appspot.com',
-    locationId: 'us-central',
-    apiKey: 'AIzaSyA_7c6tU9zWoBiqEsoncccIDonOctnpfsw',
-    authDomain: 'examples-c6a7d.firebaseapp.com',
-    messagingSenderId: '971224201055',
+    apiKey: 'AIzaSyAW3HIopGWlw5ab3LOu8a-UVXUPrYbiiT4',
+    authDomain: 'ionic-firebase-examples.firebaseapp.com',
+    projectId: 'ionic-firebase-examples',
+    storageBucket: 'ionic-firebase-examples.appspot.com',
+    messagingSenderId: '385955969160',
+    appId: '1:385955969160:web:a61ce4d8bdcc365a23873d'
   },
   production: false
 };
