@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { SettingsPage } from './settings.page';
 import { FeaturesService, mockFeaturesService } from '../../services/features.service';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { mockAngularFireAuth } from 'src/app/models/angular-fire';
 
 describe('SettingsPage', () => {

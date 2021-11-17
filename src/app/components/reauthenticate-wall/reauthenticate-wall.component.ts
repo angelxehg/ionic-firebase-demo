@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
-import firebase from 'firebase/app';
 
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat';
 
 import { EmailLogin } from 'src/app/models';
 
