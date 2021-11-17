@@ -1,0 +1,60 @@
+<ion-content>
+  <ion-split-pane contentId="main" when="md">
+    <ion-menu contentId="main">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Ionic Firebase Demo</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <!-- Menu -->
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-label>Sections</ion-label>
+          </ion-item-divider>
+          <!-- Home menu -->
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/home" lines="none" detail="false">
+              <ion-icon slot="start" name="home-outline" [color]="activeColor('/home')">
+              </ion-icon>
+              <ion-label [color]="activeColor('/home')">Home</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <!-- Settings menu -->
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/settings" lines="none" detail="false">
+              <ion-icon slot="start" name="build-outline" [color]="activeColor('/settings')">
+              </ion-icon>
+              <ion-label [color]="activeColor('/settings')">Settings</ion-label>
+              <!-- Update badge -->
+              <ion-badge *ngIf="features.updateAvailable" color="success">
+                <ion-icon name="cloud-download"></ion-icon>
+              </ion-badge>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-item-group>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main">
+      <!-- Tabs -->
+      <ion-tabs>
+        <ion-tab-bar slot="bottom" class="ion-hide-md-up">
+          <!-- Home tab -->
+          <ion-tab-button tab="home">
+            <ion-icon name="home-outline"></ion-icon>
+            <ion-label [color]="activeColor('/home')">Home</ion-label>
+          </ion-tab-button>
+          <!-- Settings tab -->
+          <ion-tab-button tab="settings">
+            <ion-icon name="build-outline"></ion-icon>
+            <ion-label [color]="activeColor('/settings')">Settings</ion-label>
+            <!-- Update badge -->
+            <ion-badge *ngIf="features.updateAvailable" color="success">
+              <ion-icon name="cloud-download"></ion-icon>
+            </ion-badge>
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+    </ion-router-outlet>
+  </ion-split-pane>
+</ion-content>

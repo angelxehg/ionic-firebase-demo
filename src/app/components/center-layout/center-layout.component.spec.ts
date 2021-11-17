@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { TabsLayoutComponent } from './tabs-layout.component';
+import { CenterLayoutComponent } from './center-layout.component';
 
-describe('TabsLayoutComponent', () => {
-  let component: TabsLayoutComponent;
-  let fixture: ComponentFixture<TabsLayoutComponent>;
+describe('CenterLayoutComponent', () => {
+  let component: CenterLayoutComponent;
+  let fixture: ComponentFixture<CenterLayoutComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TabsLayoutComponent ],
+      declarations: [ CenterLayoutComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TabsLayoutComponent);
+    fixture = TestBed.createComponent(CenterLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

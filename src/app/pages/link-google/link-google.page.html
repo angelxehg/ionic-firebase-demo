@@ -1,0 +1,15 @@
+<ion-content>
+  <app-reauthenticate-wall defaultMethod="password">
+    <app-center-layout message="Link Google account">
+      <p>
+        Do you want to link your Google Account
+      </p>
+      <ion-item button detail="false" (click)="linkGoogleProvider()" [disabled]="lockUI">
+        <ion-icon slot="start" name="logo-google" color="primary"></ion-icon>
+        <ion-label>Link Google Account</ion-label>
+      </ion-item>
+      <!-- More actions -->
+      <app-cancel-button></app-cancel-button>
+    </app-center-layout>
+  </app-reauthenticate-wall>
+</ion-content>

@@ -1,0 +1,21 @@
+<div class="container">
+  <img src="assets/circle.png" style="max-width: 64px;" alt="Ionic Firebase Demo logo">
+  <div class="container-content ion-margin-top">
+    <!-- Header & message -->
+    <strong *ngIf="header; else versionLink">{{ header }}</strong>
+    <ng-template #versionLink>
+      <strong>
+        Ionic Firebase Demo <b>v0.1.0</b>
+      </strong>
+    </ng-template>
+    <p *ngIf="message; else portfolioLink">{{ message }}</p>
+    <ng-template #portfolioLink>
+      <p>
+        Created by <a target="_blank" rel="noopener noreferrer" href="https://angelxehg.github.io">Angel Hurtado</a>
+      </p>
+    </ng-template>
+    <div class="ion-margin-top">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

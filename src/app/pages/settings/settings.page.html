@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Simple social display -->
+  <ion-item-group *ngIf="user">
+    <ion-item-divider>
+      <ion-label>Account</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img [src]="user.photoURL || 'assets/avatar.svg'">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ user.displayName || 'User' }}</h2>
+        <p>{{ user.email }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item button detail="false" (click)="sendEmailVerification()">
+      <ion-icon slot="start" name="mail-outline" [color]="user.emailVerified ? 'success' : 'danger'"></ion-icon>
+      <ion-label [color]="user.emailVerified ? '' : 'danger'">
+        {{ user.emailVerified ? 'Email verified' : 'Email not verified' }}
+      </ion-label>
+    </ion-item>
+    <ion-item button detail="false" (click)="nameChangePopup()">
+      <ion-icon slot="start" name="create-outline" color="primary"></ion-icon>
+      <ion-label>Change name</ion-label>
+    </ion-item>
+    <!-- Logout button -->
+    <ion-item button detail="false" (click)="logout()">
+      <ion-icon slot="start" name="exit-outline" color="danger"></ion-icon>
+      <ion-label>Log out</ion-label>
+    </ion-item>
+  </ion-item-group>
+  <!-- Authentication providers -->
+  <ion-item-group *ngIf="user">
+    <ion-item-divider>
+      <ion-label>Authentication providers</ion-label>
+    </ion-item-divider>
+    <ion-item *ngFor="let provider of user.providerData" button detail="false" (click)="removeProvider(provider)">
+      <ion-icon slot="start" [name]="getProviderMeta(provider).icon" color="success"></ion-icon>
+      <ion-label>
+        <h2>{{getProviderMeta(provider).title}}</h2>
+        <p>{{getProviderMeta(provider).display}}</p>
+      </ion-label>
+    </ion-item>
+    <!-- Add providers -->
+    <ion-item *ngIf="!hasProvider('password')" button detail="false" routerLink="/createPassword">
+      <ion-icon slot="start" name="key-outline"></ion-icon>
+      <ion-label>Create password</ion-label>
+    </ion-item>
+    <ion-item *ngIf="!hasProvider('google.com')" button detail="false" routerLink="/linkGoogle">
+      <ion-icon slot="start" name="logo-google"></ion-icon>
+      <ion-label>Link Google account</ion-label>
+    </ion-item>
+    <ion-item button detail="false" routerLink="/changeEmail" *ngIf="hasProvider('password')">
+      <ion-icon slot="start" name="mail-outline" color="warning"></ion-icon>
+      <ion-label>Change email</ion-label>
+    </ion-item>
+    <ion-item button detail="false" routerLink="/changePassword" *ngIf="hasProvider('password')">
+      <ion-icon slot="start" name="key-outline" color="warning"></ion-icon>
+      <ion-label>Change password</ion-label>
+    </ion-item>
+    <ion-item button detail="false" routerLink="/deleteAccount">
+      <ion-icon slot="start" name="trash-outline" color="danger"></ion-icon>
+      <ion-label>Delete account</ion-label>
+    </ion-item>
+  </ion-item-group>
+  <!-- About -->
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>About</ion-label>
+    </ion-item-divider>
+    <ion-item button detail="false" (click)="checkUpdates()">
+      <ion-icon *ngIf="!fetchingUpdates; else updatesSpinner;" slot="start"
+        [name]="features.updateAvailable ? 'cloud-download-outline' : 'information-circle-outline'"
+        [color]="features.updateAvailable ? 'success' : 'medium'"></ion-icon>
+      <ng-template #updatesSpinner>
+        <ion-spinner slot="start" name="bubbles" color="medium"></ion-spinner>
+      </ng-template>
+      <ion-label>
+        <h2>Ionic Firebase Demo v0.1.0</h2>
+        <ion-text color="success" *ngIf="features.updateAvailable">
+          Update available
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item button detail="false" target="_blank" rel="noopener noreferrer" href="https://angelxehg.github.io">
+      <ion-icon slot="start" name="person-outline" color="medium"></ion-icon>
+      <ion-label>
+        Created by Angel Hurtado
+      </ion-label>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

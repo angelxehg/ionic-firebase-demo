@@ -1,0 +1,25 @@
+<ion-content>
+  <app-center-layout [message]="message">
+    <ion-spinner *ngIf="modeUI === 'verify'" name="bubbles" color="medium"></ion-spinner>
+    <!-- Reset password form -->
+    <form *ngIf="modeUI === 'resetPassword'" [formGroup]="changePasswordForm" (ngSubmit)="handlePasswordReset()">
+      <ion-item>
+        <ion-label position="floating">New password</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Confirm password</ion-label>
+        <ion-input formControlName="passwordConfirmation" type="password"></ion-input>
+      </ion-item>
+      <button type="submit" [disabled]="!changePasswordForm.valid" class="ion-hide">Change password</button>
+      <ion-item button type="submit" detail="false" [disabled]="!changePasswordForm.valid" (click)="handlePasswordReset()">
+        <ion-icon slot="start" name="key-outline" color="success"></ion-icon>
+        <ion-label>
+          Change password
+        </ion-label>
+      </ion-item>
+    </form>
+    <!-- More actions -->
+    <app-cancel-button></app-cancel-button>
+  </app-center-layout>
+</ion-content>

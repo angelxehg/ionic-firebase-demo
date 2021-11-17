@@ -6,10 +6,12 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LayoutsModule } from './layouts/layouts.module';
-import { AngularFireModule } from '@angular/fire/compat';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { ComponentsModule } from './components/components.module';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,9 +20,15 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    LayoutsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
+    ComponentsModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

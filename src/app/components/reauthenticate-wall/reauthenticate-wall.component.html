@@ -1,0 +1,32 @@
+<app-center-layout *ngIf="!readyToContinue; else readyContent;" message="Login again to continue">
+  <!-- Login form -->
+  <form *ngIf="defaultMethod === 'password' || !defaultMethod" [formGroup]="reautenticateForm" (ngSubmit)="handleReauthenticate()">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+    <button type="submit" [disabled]="!reautenticateForm.valid" class="ion-hide">Continue</button>
+    <ion-item button type="submit" detail="false" [disabled]="!reautenticateForm.valid" (click)="handleReauthenticate()">
+      <ion-icon slot="start" name="log-in-outline" color="success"></ion-icon>
+      <ion-label>
+        Continue
+      </ion-label>
+    </ion-item>
+  </form>
+  <!-- More actions -->
+  <ion-item *ngIf="defaultMethod === 'google.com'|| !defaultMethod" button detail="false" (click)="reloginWithGoogle()"
+    [disabled]="reautenticateForm.disabled" class="ion-margin-top">
+    <ion-icon slot="start" name="logo-google" color="primary"></ion-icon>
+    <ion-label>
+      Continuar con Google
+    </ion-label>
+  </ion-item>
+  <app-cancel-button></app-cancel-button>
+</app-center-layout>
+<ng-template #readyContent>
+  <ng-content></ng-content>
+</ng-template>

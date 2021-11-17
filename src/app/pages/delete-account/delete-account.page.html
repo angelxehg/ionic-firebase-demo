@@ -1,0 +1,15 @@
+<ion-content>
+  <app-reauthenticate-wall>
+    <app-center-layout message="Delete account">
+      <p>
+        ¿Do you want to delete your account? This action is <b>permanent</b>
+      </p>
+      <ion-item button detail="false" (click)="deleteAccount()" [disabled]="lockUI">
+        <ion-icon slot="start" name="trash-outline" color="danger"></ion-icon>
+        <ion-label>Delete account</ion-label>
+      </ion-item>
+      <!-- More actions -->
+      <app-cancel-button></app-cancel-button>
+    </app-center-layout>
+  </app-reauthenticate-wall>
+</ion-content>

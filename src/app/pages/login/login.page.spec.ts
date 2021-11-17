@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 
+import { mockAngularFireAuth } from 'src/app/models/angular-fire';
 import { LoginPage } from './login.page';
 
 describe('LoginPage', () => {
@@ -10,7 +14,15 @@ describe('LoginPage', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ LoginPage ],
-      imports: [IonicModule.forRoot()]
+      imports: [
+        IonicModule.forRoot(),
+        RouterTestingModule,
+        FormsModule,
+        ReactiveFormsModule,
+      ],
+      providers: [
+        { provide: AngularFireAuth, useValue: mockAngularFireAuth },
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LoginPage);
