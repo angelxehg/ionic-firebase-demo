@@ -10,7 +10,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ComponentsModule } from './components/components.module';
 
-import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({

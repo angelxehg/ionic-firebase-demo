@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
-import firebase from 'firebase/compat';
+import firebase from 'firebase/compat/app';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FeaturesService } from 'src/app/services/features.service';

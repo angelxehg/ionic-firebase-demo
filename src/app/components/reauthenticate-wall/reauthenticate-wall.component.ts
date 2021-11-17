@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import firebase from 'firebase/compat';
+import firebase from 'firebase/compat/app';
 
 import { EmailLogin } from 'src/app/models';
 
