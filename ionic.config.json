@@ -1,0 +1,7 @@
+{
+  "name": "Ionic Firebase Demo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
